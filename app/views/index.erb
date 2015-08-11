@@ -5,7 +5,9 @@
 	</head>
 	
 	<body>
-		<p><%= @text %></p>
+		<% @text.each do |text| %>
+		<p><%= text %></p>
+		<% end rescue puts "@text has no tweets inside of it" %>
 	</body>
 
 </html>

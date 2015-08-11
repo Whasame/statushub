@@ -10,16 +10,27 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/' do
-		client = Twitter::Streaming::Client.new do |config|
-  config.consumer_key        = "6pCfv1r5Gwizik2g3tGtCpqS4"
-  config.consumer_secret     = "yKu4WFbzAvJcV7i7Weti2zTdiybdL10Z94LjJKyuu1kAnaeGfr"
-  config.access_token        = "513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD"
-  config.access_token_secret = "UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV"
+client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = "mni3A91Dkg9LlwKwt6mwQ8Ige"
+  config.consumer_secret     = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
+  config.access_token        = "2296841470-KwOxKEDYg1s3PQHemkPoqI0c6dP2h0pz3X90zwz"
+  config.access_token_secret = "pmRmC1LtkpyV0hBNJVZ4vP8A9ruqOznfTZ0xlx0GEzTeu"
 	end
-		client.sample.take(3) do |object|
-			puts object.text
-end
-		erb :index
+	
+	
+	# I COULDNT FIGURE IT OUT SO IT DOESNT DO ANYTHING RIGHT NOW
+	
+# 	@text = Array.new
+# 	client.search("ruby gems", result_type: "recent").take(15).collect do |tweet|
+# 	@text.push("#{tweet.user.screen_name}: #{tweet.text}")
+# end
+
+# 		client.sample do |object|
+# 			@text = object.text if object.is_a?(Twitter::Tweet)
+# 			puts @text
+# 					erb :index
+# 	end
+erb :index
   end
 	
 end
