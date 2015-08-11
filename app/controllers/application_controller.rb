@@ -10,16 +10,15 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/' do
-		client = Twitter::REST::Client.new do |config|
+		client = Twitter::Streaming::Client.new do |config|
   config.consumer_key        = "6pCfv1r5Gwizik2g3tGtCpqS4"
   config.consumer_secret     = "yKu4WFbzAvJcV7i7Weti2zTdiybdL10Z94LjJKyuu1kAnaeGfr"
   config.access_token        = "513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD"
   config.access_token_secret = "UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV"
 	end
-		@client = client.user_timeline("maalts")
-		@client.each do |client|
-			puts client.text
-		end
+		client.sample.take(3) do |object|
+			puts object.text
+end
 		erb :index
   end
 	
