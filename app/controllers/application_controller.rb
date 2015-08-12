@@ -1,4 +1,6 @@
 require "./config/enviornment"
+require 'pry'
+require 'json'
 
 class ApplicationController < Sinatra::Base
   
@@ -29,7 +31,15 @@ client = Twitter::REST::Client.new do |config|
 # 			@text = object.text if object.is_a?(Twitter::Tweet)
 # 			puts @text
 # 					erb :index
-# 	end
+  
+  trends = client.trends(1)
+#   puts trends[0]q
+  binding.pry
+
+#   trends["trends"].each do |trend|
+#     tweets.push("#{trend['name']}")
+#   end
+  # 	end
 erb :index
   end
 	

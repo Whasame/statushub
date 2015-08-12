@@ -100,6 +100,3 @@ DEPENDENCIES
   sqlite3
   tux
   twitter
-
-BUNDLED WITH
-   1.10.6
