@@ -3,23 +3,44 @@
 
 <head>
   <link rel="shortcut icon" href="img/fave.ico" type="image/x-icon" />
-  <link rel='stylesheet' href='css/loading.css' type='css/x-icon' />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 
 <body>
+	<% require 'pry' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2" style='height:500px;width:100px;background-color:cyan;'>
+			<div class='fb login' style='float:right;z-index:2;'>
+  			<div id="fb-root"></div>
+  				<script>
+    				(function(d, s, id) {
+      				var js, fjs = d.getElementsByTagName(s)[0];
+      				if (d.getElementById(id)) return;
+      				js = d.createElement(s); js.id = id;
+      				js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1620812258194848";
+      				fjs.parentNode.insertBefore(js, fjs);
+    					}(document, 'script', 'facebook-jssdk'));
+  				</script>
+  			<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+			</div>
+    </div>
+   	<div class="span10">
+			<% num = 0 %>
+			<% @tweets.each do |tweet| %>
+			<% #binding.pry %>
+			<p>Name: <%= "#{tweet.attrs[:trends][num][:name]}" %></p>
+			<p>Search Query: <%= "#{tweet.attrs[:trends][num][:query]}" %></p>
+			<p>Link: <%= "#{tweet.attrs[:trends][num][:url]}" %></p>
+			<% num += 1 %>
+			<% end %>
+      <!--Body content-->
+    </div>
+  </div>
+</div>
+
 	
-  <div id="fb-root"></div>
-  <script>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1620812258194848";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-				console.log(FB.getAccessToken);
-  </script>
-  <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+	
 	
 </body>
 

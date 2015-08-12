@@ -1,5 +1,5 @@
 require 'bundler'
-
+require './app/models/twitter_wrapper.rb'
 Bundler.require
 
 Dotenv.load

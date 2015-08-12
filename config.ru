@@ -1,4 +1,4 @@
 require './app/controllers/application_controller'
-require './config/enviornment'
+require './config/environment'
 
 run ApplicationController

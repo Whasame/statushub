@@ -1,4 +1,4 @@
-require "./config/enviornment"
+require "./config/environment"
 
 class ApplicationController < Sinatra::Base
   
@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
     
     use OmniAuth::Builder do
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
+			provider :facebook, ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET']
     end
   end
   
@@ -18,6 +19,11 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/home' do
+		wrap1 = TwitterWrapper.new
+		wrap2 = TwitterWrapper.new
+		@tweets = []
+		@tweets.push(wrap1.trends)
+		@tweets.push(wrap2.trends)
 		erb :home
 	end
 # client = Twitter::REST::Client.new do |config|
@@ -50,8 +56,5 @@ class ApplicationController < Sinatra::Base
 #   # 	end
 # erb :index
 #   end
-get '/fb' do
-	erb :fb
-end
 	
 end

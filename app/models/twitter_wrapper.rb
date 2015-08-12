@@ -1,22 +1,23 @@
+require './config/environment.rb'
+
 class TwitterWrapper
   
-  before do
-    client = Twitter::REST::Client.new do |config|
-      @key = "mni3A91Dkg9LlwKwt6mwQ8Ige"
-      @secret = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
-      @token = "2296841470-KwOxKEDYg1s3PQHemkPoqI0c6dP2h0pz3X90zwz"
-      @token_secret = "pmRmC1LtkpyV0hBNJVZ4vP8A9ruqOznfTZ0xlx0GEzTeu"
-      config.consumer_key        = key
-      config.consumer_secret     = secret
-      config.access_token        = token
-      config.access_token_secret = token_secret
+	def initialize
+    @client = Twitter::REST::Client.new do |config|
+      @key = "6pCfv1r5Gwizik2g3tGtCpqS4"
+      @secret = "yKu4WFbzAvJcV7i7Weti2zTdiybdL10Z94LjJKyuu1kAnaeGfr"
+      @token = "513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD"
+      @token_secret = "UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV"
+      config.consumer_key        = @key
+      config.consumer_secret     = @secret
+      config.access_token        = @token
+      config.access_token_secret = @token_secret
       
     end
 	end
   
-  helpers do
     def trends
-      client.trends(2459115)
+      @client.trends(2459115)
     end
     
     def search_trend(trend)
@@ -29,20 +30,20 @@ class TwitterWrapper
 #       text.gsub(/(https?:\/\/\w+(\.\w+)+(\/[\w\+\-\,\%]+)*(\?[\w\[\]]+(=\w*)?(&\w+(=\w*)?)*)?(#\w+)?)/i, '<a class="external" href="\1" target="_blank">\1</a>')
 #     end
     def consumer_key
-     key
+     @key
     end
     
     def consumer_secret
-      secret
+      @secret
     end
     
     def token
-      token
+      @token
     end
     
     def token_secret
-      token_secret
+      @token_secret
     end
-  end
+
   
 end
