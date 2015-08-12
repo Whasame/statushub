@@ -8,6 +8,10 @@ gem "rake"
 gem "pg"
 gem "twitter"
 gem "tux"
+gem 'omniauth-twitter'
+gem 'json'
+gem 'dotenv'
+gem 'omniauth-facebook'
 
 group :development do 
   gem 'pry'

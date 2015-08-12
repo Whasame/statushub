@@ -1,6 +1,4 @@
 require "./config/enviornment"
-require 'pry'
-require 'json'
 
 class ApplicationController < Sinatra::Base
   
