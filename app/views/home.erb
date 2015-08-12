@@ -14,15 +14,10 @@
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1620812258194848";
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1620812258194848";
       fjs.parentNode.insertBefore(js, fjs);
-			console.log(FB.getAccessToken);
     }(document, 'script', 'facebook-jssdk'));
-		FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    console.log(response.authResponse.accessToken);
-  }
-});
+				console.log(FB.getAccessToken);
   </script>
   <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
 	
