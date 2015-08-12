@@ -42,5 +42,8 @@ client = Twitter::REST::Client.new do |config|
   # 	end
 erb :index
   end
+get '/fb' do
+	erb :fb
+end
 	
 end
