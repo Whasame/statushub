@@ -11,7 +11,13 @@ class ApplicationController < Sinatra::Base
 		set :session_secret, 'admin123'
   end
   
-#   get '/' do
+  get '/' do
+		erb :load
+	end
+	
+	get '/home' do
+		erb :home
+	end
 # client = Twitter::REST::Client.new do |config|
 #   config.consumer_key        = "mni3A91Dkg9LlwKwt6mwQ8Ige"
 #   config.consumer_secret     = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
