@@ -7,6 +7,10 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
 		enable :sessions
 		set :session_secret, 'admin123'
+    
+    use OmniAuth::Builder do
+      provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
+    end
   end
   
   get '/' do
