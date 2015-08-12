@@ -12,12 +12,18 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/' do
-client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "mni3A91Dkg9LlwKwt6mwQ8Ige"
-  config.consumer_secret     = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
-  config.access_token        = "2296841470-KwOxKEDYg1s3PQHemkPoqI0c6dP2h0pz3X90zwz"
-  config.access_token_secret = "pmRmC1LtkpyV0hBNJVZ4vP8A9ruqOznfTZ0xlx0GEzTeu"
+		erb :load
 	end
+	
+	get '/home' do
+		erb :home
+	end
+# client = Twitter::REST::Client.new do |config|
+#   config.consumer_key        = "mni3A91Dkg9LlwKwt6mwQ8Ige"
+#   config.consumer_secret     = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
+#   config.access_token        = "2296841470-KwOxKEDYg1s3PQHemkPoqI0c6dP2h0pz3X90zwz"
+#   config.access_token_secret = "pmRmC1LtkpyV0hBNJVZ4vP8A9ruqOznfTZ0xlx0GEzTeu"
+# 	end
 	
 	
 	# I COULDNT FIGURE IT OUT SO IT DOESNT DO ANYTHING RIGHT NOW
@@ -32,15 +38,18 @@ client = Twitter::REST::Client.new do |config|
 # 			puts @text
 # 					erb :index
   
-  trends = client.trends(1)
-#   puts trends[0]q
-  binding.pry
+#   trends = client.trends(1)
+# #   puts trends[0]q
+#   binding.pry
 
-#   trends["trends"].each do |trend|
-#     tweets.push("#{trend['name']}")
+# #   trends["trends"].each do |trend|
+# #     tweets.push("#{trend['name']}")
+# #   end
+#   # 	end
+# erb :index
 #   end
-  # 	end
-erb :index
-  end
+get '/fb' do
+	erb :fb
+end
 	
 end
