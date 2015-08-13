@@ -34,13 +34,18 @@ end
 	
 	get '/home' do
 		wrap1 = TwitterWrapper.new
-		wrap2 = TwitterWrapper.new
-		wrap3 = TwitterWrapper.new
-		@tweets = []
-		@tweets.push(wrap1.trends)
-		@tweets.push(wrap2.trends)
-		@tweets.push(wrap3.trends)
-		puts @tweets
+# 		wrap2 = TwitterWrapper.new
+# 		wrap3 = TwitterWrapper.new
+# 		@tweets = []
+# 		@tweets.push(wrap1.trends)
+# 		@tweets.push(wrap2.trends)
+# 		@tweets.push(wrap3.trends)
+# 		puts @tweets
+    wrap1.trends.each do |trend, key|
+      puts trend
+    end
+    @tweets =[]
+    @tweets << wrap1.trends
 		erb :home
 	end
 	
