@@ -21,9 +21,12 @@ class ApplicationController < Sinatra::Base
 	get '/home' do
 		wrap1 = TwitterWrapper.new
 		wrap2 = TwitterWrapper.new
+		wrap3 = TwitterWrapper.new
 		@tweets = []
 		@tweets.push(wrap1.trends)
 		@tweets.push(wrap2.trends)
+		@tweets.push(wrap3.trends)
+		puts @tweets
 		erb :home
 	end
 # client = Twitter::REST::Client.new do |config|
