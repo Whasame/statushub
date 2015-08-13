@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
 #     end
 # 	end
     
-#     @tweets << wrap1.trends
+    @tweets << wrap1.trends
 		erb :home
 	end
 	

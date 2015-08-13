@@ -27,13 +27,15 @@
     </div>
    	<div class="span10">
 			<% if @tweets != [] %>
-			<% num = 0 %>
-			<% @tweets.each do |tweet| %>
+<!-- 			<% num = 0 %> -->
+      <% @tweets[0].each do |tweet| %>
+<!--       <% num = num +1 %> -->
+<!--       <% puts @tweets[0] %> -->
 			<% #binding.pry %>
-			<p>Name: <%= "#{tweet.attrs[:trends][num][:name]}" %></p>
-			<p>Search Query: <%= "#{tweet.attrs[:trends][num][:query]}" %></p>
-			<p>Link: <%= "#{tweet.attrs[:trends][num][:url]}" %></p>
-			<% num += 1 %>
+      <p>Name: <%= "#{tweet[:name]}" %></p>
+      <p>Search Query: <%= "#{tweet[:query]}" %></p>
+			<p>Link: <%= "#{tweet[:url]}" %></p>
+<!-- 			<% num += 1 %> -->
 			<% end %>
 			<% else %>
 			<% puts "no tweets recieved" %>
