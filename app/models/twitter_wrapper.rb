@@ -17,7 +17,7 @@ class TwitterWrapper
 	end
   
     def trends
-      @client.trends(2459115)
+      @client.trends(2459115).attrs[:trends]
     end
     
     def search_trend(trend)
