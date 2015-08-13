@@ -15,6 +15,5 @@ gem 'omniauth-facebook'
 gem 'pry'
 
 group :development do 
-  gem 'pry'
 	gem "sqlite3"
 end

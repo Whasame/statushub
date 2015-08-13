@@ -4,8 +4,8 @@ class TwitterWrapper
   
 	def initialize
     @client = Twitter::REST::Client.new do |config|
-      @key = "6pCfv1r5Gwizik2g3tGtCpqS4"
-      @secret = "yKu4WFbzAvJcV7i7Weti2zTdiybdL10Z94LjJKyuu1kAnaeGfr"
+      @key = ENV['TWITTER_CONSUMER_KEY']
+      @secret = ENV['TWITTER_CONSUMER_SECRET']
       @token = "513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD"
       @token_secret = "UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV"
       config.consumer_key        = @key

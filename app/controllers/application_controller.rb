@@ -14,15 +14,7 @@ class ApplicationController < Sinatra::Base
     use OmniAuth::Builder do
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
 			provider :facebook, ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET']
-    end
-		
-# 		log = File.new("app.log", "a+")
-# $stdout.reopen(log)
-# $stderr.reopen(log)
-# $stderr.sync = true
-# $stdout.sync = true
-		
-		
+    end	
   end
 	
   get '/' do
@@ -30,21 +22,7 @@ class ApplicationController < Sinatra::Base
 		erb :load
 	end
 	
-	get '/home' do
-		wrap1 = TwitterWrapper.new
-		@tweets = []
-# 		a = 0
-# 		while a < 2
-#     wrap1.trends.each do |trend, key|
-#       puts trend
-# 			@tweets << wrap1.trends
-# 			a += 1
-#     end
-# 	end
-    
-    @tweets << wrap1.trends
-		erb :home
-	end
+
 	
 	get '/auth/:provider/callback' do
 		@uid = MultiJson.encode(request.env["omniauth.auth"].uid)
@@ -52,15 +30,28 @@ class ApplicationController < Sinatra::Base
 		puts @uid + " " + @token
 		session[:uid] = @uid.gsub('"', '')
 		session[:token] = @token.gsub('"', '')
-
-  	redirect '/home'
+		redirect '/user'
 	end
 	
 	get '/user' do
-		user = open("https://graph.facebook.com/v2.4/#{session[:uid]}/friends?access_token=#{session[:token]}").read
-		info = JSON.parse(user)
-		puts info
-binding.pry
-puts user
+		url = "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=birthday,currency,devices,name,email,education,first_name,last_name,middle_name,gender,hometown,location,cover&access_token=#{session[:token]}"
+		puts url
+		user = open(url).read
+@user = JSON.parse(user)
+session[:name] = @user['name']
+# new = Users.create(:username => "test", :fb_username => @name)
+# puts new.fb_username
+redirect '/home'
 	end
+
+	get '/home' do
+		wrap1 = TwitterWrapper.new
+		@tweets = []  
+    @tweets << wrap1.trends
+		erb :home
+	end
+
+get '/a' do
+	puts "end"
+end
 end
