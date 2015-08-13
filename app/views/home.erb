@@ -26,6 +26,7 @@
 			</div>
     </div> -->
    	<div class="span10">
+			<% if @tweets != [] %>
 			<% num = 0 %>
 			<% @tweets.each do |tweet| %>
 			<% #binding.pry %>
@@ -33,6 +34,9 @@
 			<p>Search Query: <%= "#{tweet.attrs[:trends][num][:query]}" %></p>
 			<p>Link: <%= "#{tweet.attrs[:trends][num][:url]}" %></p>
 			<% num += 1 %>
+			<% end %>
+			<% else %>
+			<% puts "no tweets recieved" %>
 			<% end %>
       <!--Body content-->
     </div>
