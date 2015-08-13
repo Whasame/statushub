@@ -12,6 +12,7 @@ gem 'omniauth-twitter'
 gem 'json'
 gem 'dotenv'
 gem 'omniauth-facebook'
+gem 'pry'
 
 group :development do 
   gem 'pry'
