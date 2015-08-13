@@ -1,5 +1,7 @@
 require "./config/environment"
 require 'pry'
+require 'open-uri'
+require 'json'
 
 class ApplicationController < Sinatra::Base
   
@@ -22,10 +24,6 @@ class ApplicationController < Sinatra::Base
 		
 		
   end
-  
-	get '/server-side' do
-  redirect '/auth/facebook'
-end
 	
   get '/' do
 		puts @test
@@ -49,9 +47,19 @@ end
 	end
 	
 	get '/auth/:provider/callback' do
-  	content_type 'application/json'
 		@uid = MultiJson.encode(request.env["omniauth.auth"].uid)
 		@token = MultiJson.encode(request.env["omniauth.auth"].credentials.token)
-		redirect '/home'
+		puts @uid + " " + @token
+		session[:uid] = @uid.gsub('"', '')
+		session[:token] = @token.gsub('"', '')
+
+  	redirect '/home'
+	end
+	
+	get '/user' do
+		user = open("https://graph.facebook.com/v2.4/#{session[:uid]}/friends?access_token=#{session[:token]}").read
+		info = JSON.parse(user)
+		puts info
+binding.pry
 	end
 end
