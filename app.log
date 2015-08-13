@@ -1,0 +1,9 @@
+#<Twitter::TrendResults:0x007f2bfd7ec180>
+#<Twitter::TrendResults:0x007f2bfd789738>
+#<Twitter::TrendResults:0x007f2bfd712930>
+70.199.85.111 - - [13/Aug/2015:14:08:31 +0000] "GET /home HTTP/1.1" 200 1595 0.3800
+I, [2015-08-13T14:08:50.906217 #31575]  INFO -- omniauth: (facebook) Request phase initiated.
+70.199.85.111 - - [13/Aug/2015:14:08:50 +0000] "GET /auth/facebook HTTP/1.1" 302 295 0.0170
+I, [2015-08-13T14:08:52.320205 #31578]  INFO -- omniauth: (facebook) Callback phase initiated.
+a
+70.199.85.111 - - [13/Aug/2015:14:08:52 +0000] "GET /auth/facebook/callback?code=AQBVJWBrWHTBAk0BhdBsK65sqKEaKDckoDKgDKfk1leZ_WjwTCGdsvEU_BfP8vBFftGnULNU_b8dfl-65dCBdoSBX_LTcjs8RVxjm1ZbhPR59JO4n6Dd7cw5s7VUR0u8os73b_1rQmBaHO32bpse82_PqzRYyYINNgK2iuFh4PW2I_x8h83sCfzhyZVAZrjwuOuRPX8jKloUTtZfSeeOjGHfY1s6R-umLQeDXjVj1youMR4eyDi0t1dw8Vk9DPUKj6zYmx0Z8mshJX47Bo-dQf6yiyDJizdroBkdQ780ug1pkWpanIIMwxYYZnubR7sfmU_FkFjQVGH5g63Zbv0Ef6Pc&state=038b4eced36775f2f890422a78c1f47b628199bcc1e1c920 HTTP/1.1" 200 - 0.2749

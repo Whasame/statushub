@@ -1,4 +1,5 @@
 require "./config/environment"
+require 'pry'
 
 class ApplicationController < Sinatra::Base
   
@@ -12,9 +13,22 @@ class ApplicationController < Sinatra::Base
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
 			provider :facebook, ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET']
     end
+		
+# 		log = File.new("app.log", "a+")
+# $stdout.reopen(log)
+# $stderr.reopen(log)
+# $stderr.sync = true
+# $stdout.sync = true
+		
+		
   end
   
+	get '/server-side' do
+  redirect '/auth/facebook'
+end
+	
   get '/' do
+		puts @test
 		erb :load
 	end
 	
@@ -29,6 +43,14 @@ class ApplicationController < Sinatra::Base
 		puts @tweets
 		erb :home
 	end
+	
+	get '/auth/:provider/callback' do
+		puts "a"
+#   content_type 'application/json'
+#   MultiJson.encode(request.env)
+		binding.pry
+end
+	
 # client = Twitter::REST::Client.new do |config|
 #   config.consumer_key        = "mni3A91Dkg9LlwKwt6mwQ8Ige"
 #   config.consumer_secret     = "L8Mw1ZgEdXbhDp03NiWnkwIBALLQs7lsyfL1HymkbQ8JRnAQou"
