@@ -60,6 +60,7 @@ class ApplicationController < Sinatra::Base
 		user = open("https://graph.facebook.com/v2.4/#{session[:uid]}/friends?access_token=#{session[:token]}").read
 		info = JSON.parse(user)
 		puts info
-binding.pry
+puts "https://graph.facebook.com/v2.4/#{session[:uid]}/friends?access_token=#{session[:token]}"
+puts user
 	end
 end
