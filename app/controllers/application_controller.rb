@@ -12,8 +12,20 @@ class ApplicationController < Sinatra::Base
     use OmniAuth::Builder do
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
 			provider :facebook, ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET']
-    end	
+    end
+		
+# 		log = File.new("app.log", "a+")
+# $stdout.reopen(log)
+# $stderr.reopen(log)
+# $stderr.sync = true
+# $stdout.sync = true
+		
+		
   end
+  
+	get '/server-side' do
+  redirect '/auth/facebook'
+end
 	
   get '/' do
 		puts @test
@@ -33,10 +45,10 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/auth/:provider/callback' do
-  	content_type 'application/json'
-		@uid = MultiJson.encode(request.env["omniauth.auth"].uid)
-		@token = MultiJson.encode(request.env["omniauth.auth"].credentials.token)
-		redirect '/home'
+		puts "a"
+#   content_type 'application/json'
+#   MultiJson.encode(request.env)
+		binding.pry
 end
 	
 # client = Twitter::REST::Client.new do |config|
