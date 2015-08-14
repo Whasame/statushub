@@ -1,0 +1,32 @@
+/*
+ * I wanted to make creating/adjusting content block and sidebar dimensions easier with a little bit of LESS. I ended up not using it in my current project, so I thought I'd put in on CodePen to work on improving it a little.
+ * Just change either of the responsive layout values below and watch the boxes automatically adjust.
+*/
+/* =VARIABLES
+   ---------------------------------------------------------------------------------------------------- */
+/* total width = 1128px | content = 720px | sidebar = 408px | using the responsive formula (target ÷ context = result) */
+/* CHANGE ME! Values to be presumed in pixels (px). We'll convert them to percentages below.*/
+/* CHANGE ME! */
+/* The remaining value is calculated */
+/* Applying the responsive formula */
+/* =DEV CODE *** REMOVE AT LAUNCH
+   ---------------------------------------------------------------------------------------------------- */
+#page {
+  background-color: #fdf9ed;
+  -webkit-box-shadow: 0px 2px 4px 2px rgba(110, 88, 90, 0.2);
+  box-shadow: 0px 2px 4px 2px rgba(110, 88, 90, 0.2);
+  display: table;
+  margin: 2em auto;
+  padding: 1em;
+  position: relative;
+  width: 100%;
+  max-width: 1128px;
+}
+#page #primary {
+  /* Adjusting the total width by 10% since we're adding padding. */
+  background: #58b6b8;
+  float: left;
+  padding: 0 2.5%;
+  position: relative;
+  width: 100%;
+}

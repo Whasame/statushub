@@ -37,14 +37,14 @@ class ApplicationController < Sinatra::Base
 		user = open(uri.to_s).read
 		@user = JSON.parse(user)
 		session[:name] = @user['name']
-puts @user
 		redirect '/home'
 	end
 
 	get '/home' do
-		wrap1 = TwitterWrapper.new
-		@tweets = []  
-    @tweets << wrap1.trends
+# 		wrap1 = TwitterWrapper.new
+# 		@tweets = []  
+#     @tweets << wrap1.trends
+		@tweets = [["a", "a"], "hi"]
 		erb :home
 	end
 
