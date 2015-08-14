@@ -29,11 +29,11 @@
         <div class='all-tweets'>
 	        <% if @tweets != [] %>
  	      	<% num = 0 %>
-          <% @tweets[0].each do |tweet| %>
+          <% @tweets[num].each do |tweet| %>
 		        <div class='tweet'>
-              <p>Name: <%#= "#{tweet[:name]}" %></p>
-              <p>Search Query: <%#= "#{tweet[:query]}" %></p>
-			        <p>Link: <%#= "#{tweet[:url]}" %></p>
+              <p>Name: <%= "#{tweet[:name]}" %></p>
+              <p>Search Query: <%= "#{tweet[:query]}" %></p>
+			        <p>Link: <%= "#{tweet[:url]}" %></p>
 			        <% num += 1 %>
 			
 		         </div>
@@ -47,7 +47,13 @@
 	    </div>
 			
 			<div class='all-posts'>
-			  <
+<% if @posts != [] %>
+				<% @posts.each do |post| %>
+				<p><%= post %></p>
+				<% end %>
+				<% else %>
+				<% @posts = "no posts" %>
+				<% end %>
 		  </div>
     </div>
 		

@@ -32,19 +32,49 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/user' do
-		uri = URI(URI.escape "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=id,name,feed.limit(10){full_picture,comments.limit(10),from}&access_token=#{session[:token]}")
-		puts url
-		user = open(uri.to_s).read
-		@user = JSON.parse(user)
-		session[:name] = @user['name']
+
 		redirect '/home'
 	end
 
 	get '/home' do
-# 		wrap1 = TwitterWrapper.new
-# 		@tweets = []  
-#     @tweets << wrap1.trends
-		@tweets = [["a", "a"], "hi"]
+				uri = URI(URI.escape "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=id,name,feed.limit(20){full_picture,comments.limit(10),from,caption,description}&access_token=#{session[:token]}")
+
+		puts uri
+		user = open(uri.to_s).read
+		@user = JSON.parse(user)
+session[:name] = @user['name']
+num = 1
+@posts = []
+while num < 21 do
+		puts num 
+	@post = @user['feed']['data'][(num - 1)]
+	puts @post
+	puts ''
+	session[:pic] = @post['full_picture']
+	session[:fromName] = @post['from']['name']
+	session[:fromId] = @post['from']['id']
+	session[:caption] = @post['caption']
+	session[:desc] = @post['description']
+
+	if session[:pic] == nil
+		session[:pic] = "No Picture"
+	else
+	end
+		if session[:caption] == nil
+		session[:caption] = "No caption"
+	else
+	end
+	if session[:desc] == nil
+		session[:desc] = "No desc"
+	else
+	end
+	@posts << 'pic: ' + session[:pic].to_s + " from: " + session[:fromName].to_s + ' caption: ' + session[:caption].to_s + ' desc: ' + session[:desc].to_s
+	num += 1
+puts num
+end
+		wrap1 = TwitterWrapper.new
+		@tweets = []  
+    @tweets << wrap1.trends
 		erb :home
 	end
 
