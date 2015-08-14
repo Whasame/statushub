@@ -21,9 +21,7 @@ class ApplicationController < Sinatra::Base
 		puts @test
 		erb :load
 	end
-	
 
-	
 	get '/auth/:provider/callback' do
 		@uid = MultiJson.encode(request.env["omniauth.auth"].uid)
 		@token = MultiJson.encode(request.env["omniauth.auth"].credentials.token)
@@ -34,14 +32,13 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/user' do
-		url = "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=birthday,currency,devices,name,email,education,first_name,last_name,middle_name,gender,hometown,location,cover&access_token=#{session[:token]}"
+		url = "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=id,name,birthday,email,feed.limit(10)&access_token=#{session[:token]}"
 		puts url
 		user = open(url).read
-@user = JSON.parse(user)
-session[:name] = @user['name']
-# new = Users.create(:username => "test", :fb_username => @name)
-# puts new.fb_username
-redirect '/home'
+		@user = JSON.parse(user)
+		session[:name] = @user['name']
+		binding.pry
+		redirect '/home'
 	end
 
 	get '/home' do
@@ -51,7 +48,4 @@ redirect '/home'
 		erb :home
 	end
 
-get '/a' do
-	puts "end"
-end
 end
