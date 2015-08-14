@@ -7,23 +7,33 @@
 </head>
 
 <body>
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header" >
+        
+      </div>
+    </div>
+  </div>
+  
 	<% require 'pry' %>
-<div class="container-fluid">
-  <div class="row-fluid">
-   	<div class="span10">
-			<% if @tweets != [] %>
-<!-- 			<% num = 0 %> -->
-      <% @tweets[0].each do |tweet| %>
-<!--       <% num = num +1 %> -->
-<!--       <% puts @tweets[0] %> -->
-			<% #binding.pry %>
-      <p>Name: <%= "#{tweet[:name]}" %></p>
-      <p>Search Query: <%= "#{tweet[:query]}" %></p>
-			<p>Link: <%= "#{tweet[:url]}" %></p>
+  <div class="container-fluid">
+    <div class="row-fluid">
+   	  <div class="span10">
+		  	<% if @tweets != [] %>
+<!--  		<% num = 0 %> -->
+          <% @tweets[0].each do |tweet| %>
+        <div class="container" >
+<!--      <% num = num +1 %> -->
+<!--      <% puts @tweets[0] %> -->
+			    <% #binding.pry %>
+         <p>Name: <%= "#{tweet[:name]}" %></p>
+         <p>Search Query: <%= "#{tweet[:query]}" %></p>
+			   <p>Link: <%= "#{tweet[:url]}" %></p>
 <!-- 			<% num += 1 %> -->
+        </div><br><br><br>
 			<% end %>
 			<% else %>
-			<% puts "no tweets recieved" %>
+			  <% puts "no tweets recieved" %>
 			<% end %>
 		</div>
       <!--Body content-->
