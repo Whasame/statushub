@@ -27,6 +27,7 @@
 	<div id="page">
     <div id="primary">
         <div class='all-tweets'>
+					<h1>Trending Tweets</h1>
 	        <% if @tweets != [] %>
  	      	<% num = 0 %>
           <% @tweets[num].each do |tweet| %>
@@ -47,13 +48,21 @@
 	    </div>
 			
 			<div class='all-posts'>
-<% if @posts != [] %>
-				<% @posts.each do |post| %>
-				<p><%= post %></p>
+				<h1>Facebook Posts</h1>
+				<% num = 0 %>
+				<% while num < 21 do %>
+				<div class='fb'>
+				<p><%= @pic[num] %></p>
+				<p><%= @from[num] %></p>
+				<p><%= @cap[num] %></p>
+				<p><%= @desc[num] %></p>
+				</div>
+				<hr><br><br><br>
+					
+					<% num += 1 %>
 				<% end %>
-				<% else %>
-				<% @posts = "no posts" %>
-				<% end %>
+
+
 		  </div>
     </div>
 		

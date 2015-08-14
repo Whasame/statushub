@@ -44,37 +44,40 @@ class ApplicationController < Sinatra::Base
 		@user = JSON.parse(user)
 session[:name] = @user['name']
 num = 1
-@posts = []
+	@pic = []
+	@from = []
+	@cap = []
+	@desc = []
 while num < 21 do
-		puts num 
 	@post = @user['feed']['data'][(num - 1)]
-	puts @post
-	puts ''
-	session[:pic] = @post['full_picture']
-	session[:fromName] = @post['from']['name']
-	session[:fromId] = @post['from']['id']
-	session[:caption] = @post['caption']
-	session[:desc] = @post['description']
+	@caption = @post['caption']
+	@descr = @post['description']
+	@picr = @post['full_picture']
 
-	if session[:pic] == nil
-		session[:pic] = "No Picture"
-	else
+		if @picr == nil
+		@picr = "No Picture"
 	end
-		if session[:caption] == nil
-		session[:caption] = "No caption"
-	else
+	
+		if @caption == nil
+		@caption = "No caption"
+
 	end
-	if session[:desc] == nil
-		session[:desc] = "No desc"
-	else
+	if @descr == nil
+		@descr = "No desc"
+
 	end
-	@pic << 'pic: ' + session[:pic].to_s
-	@from << " from: " + session[:fromName].to_s
-	@cap << ' caption: ' + session[:caption].to_s
-	@desc << ' desc: ' + session[:desc].to_s
+
+
+
+		@pic << @picr
+		@from << @post['from']['name']
+		@cap << @caption
+	@desc << @descr
+	
 	num += 1
 puts num
 end
+
 		wrap1 = TwitterWrapper.new
 		@tweets = []  
     @tweets << wrap1.trends
