@@ -32,9 +32,10 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/user' do
-		url = "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=id,name,birthday,email,feed.limit(10)&access_token=#{session[:token]}"
+		url = "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=feed.limit(10){full_picture,comments.limit(10),from}&access_token=#{session[:token]}"
+uri = URI(URI.escape "https://graph.facebook.com/v2.4/#{session[:uid]}?fields=feed.limit(10){full_picture,comments.limit(10),from}&access_token=#{session[:token]}")
 		puts url
-		user = open(url).read
+		user = open(uri.to_s).read
 		@user = JSON.parse(user)
 		session[:name] = @user['name']
 		binding.pry
