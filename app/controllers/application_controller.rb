@@ -68,7 +68,10 @@ while num < 21 do
 		session[:desc] = "No desc"
 	else
 	end
-	@posts << 'pic: ' + session[:pic].to_s + " from: " + session[:fromName].to_s + ' caption: ' + session[:caption].to_s + ' desc: ' + session[:desc].to_s
+	@pic << 'pic: ' + session[:pic].to_s
+	@from << " from: " + session[:fromName].to_s
+	@cap << ' caption: ' + session[:caption].to_s
+	@desc << ' desc: ' + session[:desc].to_s
 	num += 1
 puts num
 end
