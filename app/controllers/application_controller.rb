@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
   end
 	
   get '/' do
+		puts ENV['FACEBOOK_APP_KEY']
 		puts @test
 		erb :load
 	end
