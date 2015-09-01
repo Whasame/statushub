@@ -10,18 +10,16 @@
   <div class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header" >
-        <a class="navbar-brand" href="#">StatisHub</a>
+        <a class="navbar-brand" href="#" onclick='unfade(getElementById("posts"));unfade(getElementById("tweets"))'>StatisHub</a>
         <ul class="nav navbar-nav">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
+          <li><a href="#" onclick='fade(getElementById("posts"));unfade(getElementById("tweets"))'>Twitter</a></li>
+          <li><a href="#" onclick='fade(getElementById("tweets"));unfade(getElementById("posts"))'>Facebook</a></li>
         </ul>
       </div>
     </div>
   </div>
 	
-	
-	
-	<div style="float:left;margin-left:100px;">
+	<div id='tweets' style="float:left;margin-left:100px;overflow:auto;">
 
 		<h1 class="text-center">Top Ten Tweets</h1>
 								
@@ -42,7 +40,7 @@
 		
 	</div>
 
-	<div style="margin-left:850px;margin-top:40px;">
+	<div id='posts' style="margin-left:850px;margin-top:10px;overflow:auto;">
 
 		<h1 class="text-center"style='margin-right:60px;'>Top Ten Posts</h1>
 			
@@ -59,6 +57,34 @@
 				<% num += 1 %>
 			<% end %>
 	</div>
+	
+	<script>
+		function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
+
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
+	</script>
 	
 </body>
 

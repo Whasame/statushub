@@ -4,15 +4,16 @@ class TwitterWrapper
   
 	def initialize
     @client = Twitter::REST::Client.new do |config|
-      @key = '5HEranxUQPnlOixhJDf5e5nr6'
-      @secret = 'RG71W9hRLwV2q3qaFqgB8xmxKNl2zZsXgn3cXv4udTnFQuejxW'
-      @token = '513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD'
-      @token_secret = 'UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV'
-      config.consumer_key        = @key
-      config.consumer_secret     = @secret
-      config.access_token        = @token
-      config.access_token_secret = @token_secret
-      
+			#initialize instance variables with tokens for twitter api | Start
+      	@key = '5HEranxUQPnlOixhJDf5e5nr6'
+      	@secret = 'RG71W9hRLwV2q3qaFqgB8xmxKNl2zZsXgn3cXv4udTnFQuejxW'
+      	@token = '513113094-4TkEJjpPJEZkTLIc7zZh6NLQwiq97HKXdb3TRryD'
+      	@token_secret = 'UfA89ReMGsoLHBVRD1ifvZiadCX9GBuyMXLSo9nhcD2xV'
+      	config.consumer_key        = @key
+      	config.consumer_secret     = @secret
+      	config.access_token        = @token
+      	config.access_token_secret = @token_secret
+			# End
     end
 	end
   
@@ -24,11 +25,7 @@ class TwitterWrapper
       @client.search(trend, :rpp => 15, :result_type => 'recent').attrs[:statuses]
     end
     
-#      def parse_for_url(text)
-#       # The regex could probably still be improved, but this seems to do the
-#       # trick for most cases.
-#       text.gsub(/(https?:\/\/\w+(\.\w+)+(\/[\w\+\-\,\%]+)*(\?[\w\[\]]+(=\w*)?(&\w+(=\w*)?)*)?(#\w+)?)/i, '<a class="external" href="\1" target="_blank">\1</a>')
-#     end
+	#set keys for twitter api | Start
     def consumer_key
      @key
     end
@@ -44,6 +41,5 @@ class TwitterWrapper
     def token_secret
       @token_secret
     end
-
-  
+	# End
 end
